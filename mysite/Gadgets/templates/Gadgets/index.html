@@ -1,0 +1,68 @@
+{% extends 'Gadgets/base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block body %}
+
+    {% for item in itemlist %}
+
+    <div class="row mb-5">
+
+        <div class="col-md-3 offset-md-2 ">
+            <img src="{{ item.item_image }}" 
+                class="card" height="135px" width="230px"
+            >
+        </div>
+
+        <div class="col-md-4">
+            
+            <h3 style="font-size: 1.5rem;">
+
+                {{ item.item_name }}
+
+            </h3>
+
+            <h5 style="font-style: italic; font-size: 1rem;">
+
+                {{ item.item_desc }}
+
+            </h5>
+
+            <h6>
+                ${{ item.item_price }}
+            </h6>
+
+            <h6 style="font-style: italic;">
+
+                Added for : {{ item.for_user }}
+
+            </h6>
+
+            <h6 style="font-style: italic;">
+
+                Added by Superuser : Admin
+
+            </h6>
+            
+        </div>
+
+        <div class="col-md-3">
+            <a href="{url 'Gadgets:detail' item.id}" style="width: 100px;" class="btn btn-success">
+                Details
+            </a>
+        </div>
+
+    </div>
+    
+    {% endfor %}
+
+    {% endblock %}
+    
+</body> 
+</html>
