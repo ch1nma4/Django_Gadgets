@@ -1,5 +1,7 @@
 {% extends 'Gadgets/base.html' %}
 
+{% block body %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    {% block body %}
+<body style="background: url(https://wallpaperaccess.com/thumb/4334510.jpg); color: aliceblue;">
 
     {% for item in itemlist %}
 
@@ -30,7 +31,7 @@
 
             <h5 style="font-style: italic; font-size: 1rem;">
 
-                {{ item.item_desc }}
+                {{ item.item_desc | truncatewords:6 }}
 
             </h5>
 
@@ -53,7 +54,7 @@
         </div>
 
         <div class="col-md-3">
-            <a href="{url 'Gadgets:detail' item.id}" style="width: 100px;" class="btn btn-success">
+            <a href="{% url 'Gadgets:detail' item.id %}" style="width: 100px;" class="btn btn-success">
                 Details
             </a>
         </div>
