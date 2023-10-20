@@ -8,48 +8,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .card{
+            width: 650px;
+            display:flex;
+            justify-content: center;
+        }
+
+        .btn{
+            width: 100px;
+            color: red;
+            border: 1px solid white;
+        }
+
+        .btn:hover{
+            background-color: orangered;
+        }
+
+    </style>
 </head>
 
 <body>
 
 <div class="container">
     <div class="row">
-        <div class="col-md-4 offset-md-4">
+        <div class="col-md-4 offset-md-3">
             <div class="card">
-                <div class="card-header text-white bg-info">
-                    <div class="card-title offset-md-4">
+                <div class="card-header text-white" style="background-color: rgb(17, 49, 55);" >
+                    <div class="card-title offset-md-5" style="color: red; font-size: 25px;">
                         ADD ITEM
                     </div>
                 </div>
-                <div class="card-body">
-                    <form method="POST">
+                <div class="card-body" style="background:url(https://wallpaperaccess.com/thumb/4334510.jpg);">
+                    <form method="POST" style="color: red ">
                         {% csrf_token %}
                 
-                        <label class="offset-md-1">Product Code : </label><br>
-                        <span class="offset-md-1">{{ form.prod_code }}</span>
+                        <label class="offset-md-1">Product Code : </label>
+                        <span class="field">{{ form.prod_code }}</span>
                         <br><br>
                 
-                        <label class="offset-md-1">For User : </label><br>
-                        <span class="offset-md-1">{{ form.for_user }}</span>
+                        <label class="offset-md-1">For User : </label>
+                        <span class="field">{{ form.for_user }}</span>
                         <br><br>
                 
-                        <label class="offset-md-1">Item Name : </label><br>
-                        <span class="offset-md-1">{{ form.item_name }}</span>
+                        <label class="offset-md-1">Item Name : </label>
+                        <span class="field">{{ form.item_name }}</span>
                         <br><br>
                 
-                        <label class="offset-md-1">Item Description : </label><br>
-                        <span class="offset-md-1">{{ form.item_desc }}</span>
+                        <label class="offset-md-1">Item Description : </label>
+                        <span class="field">{{ form.item_desc }}</span>
                         <br><br>
                 
-                        <label class="offset-md-1">Item Price : </label><br>
-                        <span class="offset-md-1">{{ form.item_price }}</span>
+                        <label class="offset-md-1">Item Price : </label>
+                        <span class="field">{{ form.item_price }}</span>
                         <br><br>
                 
-                        <label class="offset-md-1">Item Image : </label><br>
-                        <span class="offset-md-1">{{ form.item_image }}</span>
-                        <br><br>
-                
-                        <button class="offset-md-5 btn btn-success btn-sm" type="submit">Save</button>
+                        <label class="offset-md-1">Item Image : </label>
+                        <span class="field">{{ form.item_image }}</span>
+                        <br><br><br>
+                        
+                        <button class="btn offset-md-5" type="submit">Save</button>
+                        
                     </form>
                     
                 </div>
