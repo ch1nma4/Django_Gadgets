@@ -10,7 +10,7 @@
     <title>Document</title>
     <style>
         .card{
-            width: 650px;
+            width: 490px;
             display:flex;
             justify-content: center;
         }
@@ -32,38 +32,38 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-4 offset-md-3">
+        <div  style="padding-top: 30px; padding-left: 335px; ">
             <div class="card">
-                <div class="card-header text-white" style="background-color: rgb(17, 49, 55);" >
-                    <div class="card-title offset-md-5" style="color: red; font-size: 25px;">
+                <div class="card-header text-white" style="background-color: #1a1c25; border-bottom: 2px solid white;" >
+                    <div class="card-title offset-md-4" style="color: red; font-size: 25px;">
                         ADD ITEM
                     </div>
                 </div>
-                <div class="card-body" style="background:url(https://wallpaperaccess.com/thumb/4334510.jpg);">
-                    <form method="POST" style="color: red ">
+                <div class="card-body" style="background:#1a1c25">
+                    <form method="POST" style="color: white ">
                         {% csrf_token %}
                 
-                        <label class="offset-md-1">Product Code : </label>
+                        <label class="offset-md-2">Product Code : </label>
                         <span class="field">{{ form.prod_code }}</span>
                         <br><br>
                 
-                        <label class="offset-md-1">For User : </label>
+                        <label class="offset-md-2">For User : </label>
                         <span class="field">{{ form.for_user }}</span>
                         <br><br>
                 
-                        <label class="offset-md-1">Item Name : </label>
+                        <label class="offset-md-2">Item Name : </label>
                         <span class="field">{{ form.item_name }}</span>
                         <br><br>
                 
-                        <label class="offset-md-1">Item Description : </label>
+                        <label class="offset-md-2">Item Description : </label>
                         <span class="field">{{ form.item_desc }}</span>
                         <br><br>
                 
-                        <label class="offset-md-1">Item Price : </label>
+                        <label class="offset-md-2">Item Price : </label>
                         <span class="field">{{ form.item_price }}</span>
                         <br><br>
                 
-                        <label class="offset-md-1">Item Image : </label>
+                        <label class="offset-md-2">Item Image : </label>
                         <span class="field">{{ form.item_image }}</span>
                         <br><br><br>
                         
@@ -76,7 +76,7 @@
         </div>
     </div>
 </div>
-<br>
+
 
 </body>
 </html>

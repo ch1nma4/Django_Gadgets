@@ -8,13 +8,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .card{
+            width: 490px;
+            display:flex;
+            justify-content: center;
+        }
+
+        .btn{
+            width: 100px;
+            color: red;
+            border: 1px solid white;
+        }
+
+        .btn:hover{
+            background-color: orangered;
+        }
+
+    </style>
+
 </head>
 <body>
-    <form method="POST">
-        { csrf_token }
-        {{ form }}
-        <button type="submit">sign Up</button>
-    </form>
+    <div class="container">
+        <div class="row">
+            <div  style="padding-top: 10px; padding-left: 335px; ">
+                <div class="card">
+                    <div class="card-header text-white" style="background-color: #1a1c25; border-bottom: 2px solid white;" >
+                        <div class="card-title offset-md-5" style="color: red; font-size: 25px;">
+                            Sign Up
+                        </div>
+                    </div>
+                    <div class="card-body" style="background:#1a1c25">
+                        <form method="POST">
+                            {% csrf_token %}
+                            
+                            <label class="offset-md-1">Username: </label>
+                            <span >{{ form.username }}</span><br><br>
+                        
+                            <br><label class = 'offset-md-1'> Email: </label>
+                            <spa>{{ form.email }}</spa><br><br> 
+                        
+                            <br><label class = 'offset-md-1'>First Name: </label>
+                            <span >{{ form.first_name }}</span><br><br> 
+                        
+                            <br><label class = 'offset-md-1'>Last Name: </label>
+                            <span >{{ form.last_name }}</span><br><br> 
+                        
+                            <br><label class = 'offset-md-1'> Password: </label>
+                            <span >{{ form.password1 }}</span><br><br> 
+                        
+                            <br><label class = 'offset-md-1'> Confirm Password: </label>
+                            <span >{{ form.password2 }}</span>
+                            
+                            <br><br><button class="btn offset-md-5" type="submit">Sign Up</button><br>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
 
