@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body style="background-color: rgb(28, 32, 32); color: aliceblue;">
+<body>
     <div class="row">
         <div class="col-md-2 offset-md-1">
             <img
@@ -46,7 +46,7 @@
     
         <div class="col-md-3 offset-md-1">
             <a
-                href="#"
+                href="{% url 'Gadgets:update_item' item.id %}"
                 style="width:80px"
                 class="btn btn-warning"
             >
@@ -54,7 +54,7 @@
             </a>
     
             <a
-                href="#"
+                href="{% url 'Gadgets:delete_item' item.id %}"
                 style="width:80px"
                 class="btn btn-danger"
             >

@@ -8,8 +8,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+
+        .btn{
+            width: 100px;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .btn:hover{
+            background-color: orangered;
+        }
+
+    </style>
 </head>
-<body style="background: url(https://wallpaperaccess.com/thumb/4334510.jpg); color: aliceblue;">
+
+<body>
 
     {% for item in itemlist %}
 
@@ -23,7 +38,7 @@
 
         <div class="col-md-4">
             
-            <h3 style="font-size: 1.5rem;">
+            <h3 style="font-size: 1.5rem; color: red;">
 
                 {{ item.item_name }}
 
@@ -54,7 +69,7 @@
         </div>
 
         <div class="col-md-3">
-            <a href="{% url 'Gadgets:detail' item.id %}" style="width: 100px;" class="btn btn-success">
+            <a href="{% url 'Gadgets:detail' item.id %}" class=" btn" >
                 Details
             </a>
         </div>

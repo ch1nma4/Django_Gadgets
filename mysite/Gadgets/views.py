@@ -37,3 +37,31 @@ def create_item(request):
     
     return render(request , 'Gadgets/item-form.html' , context)
 
+
+def update_item(request , id):
+    item = Item.objects.get(pk = id)
+    form = ItemForm(request.POST or None , instance=item)
+
+    if form.is_valid():
+        form.save()
+        return redirect('Gadgets:index')
+
+    context = {
+        'form' : form,
+    }
+
+    return render(request , 'Gadgets/item-form.html' , context)
+
+def delete_item(request , id):
+    item = Item.objects.get(pk = id)
+
+    context = {
+        'item' : item
+    }
+
+    if request.method == 'POST':
+        item.delete()
+        return redirect('Gadgets:index')
+    
+
+    return render(request , 'Gadgets/item-delete.html' , context)

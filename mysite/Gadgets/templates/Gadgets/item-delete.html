@@ -1,0 +1,55 @@
+{% extends 'Gadgets/base.html' %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .item-d{
+            display: flex;
+            text-align: center;
+            justify-content: center;   
+            padding-top: 30px;         
+        }
+
+        .item-a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 40px;
+        }
+
+        .item-b{
+            height: 40px;
+            width: 100px;
+            border: 1px solid red;
+            border-radius: 10px;
+            background-color: black;
+            color: white;
+        }
+
+        .item-b:hover{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+
+        <h3 class="item-d">Are you sure you want to delete, <span style="color: red; font-size: 30px;">{{ item.item_name }}</span></h3>
+
+        <div class="item-a">
+            <button class="item-b" type="submit">Confirm</button>
+        </div>
+        
+
+    </form>
+</body>
+</html>
+
+{% endblock %}
