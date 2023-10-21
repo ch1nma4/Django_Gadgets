@@ -46,7 +46,7 @@ def login_view(request):
             login(request, user)
             messages.success(
                 request,
-                'Welcome Superuser {}, you have been loged in'.format(request.user.username)
+                'Welcome Superuser {}, you have been loged in....'.format(request.user.username)
             )
             return redirect('Gadgets:index')
 
@@ -54,7 +54,7 @@ def login_view(request):
             login(request , user)
             messages.success(
                 request,
-                'Welcome {}, you have been loged in' .format(request.user.username)
+                'Welcome {}, you have been loged in....' .format(request.user.username)
             )
             return redirect('Gadgets:index')
         
@@ -63,7 +63,12 @@ def login_view(request):
 def logout_view(request):
     messages.success(
         request,
-        '{}, you have successfully logged out'.format(request.user.username)
+        '{}, you have successfully logged out....'.format(request.user.username)
     )
     logout(request)
     return redirect('Gadgets:index')
+
+
+def profilepage(request):
+    
+    return render(request, "user/profile.html")
