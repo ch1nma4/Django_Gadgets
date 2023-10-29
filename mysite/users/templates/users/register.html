@@ -13,17 +13,44 @@
             width: 490px;
             display:flex;
             justify-content: center;
+            border: 3px solid;
+            animation: mymove 5s infinite;
+        }
+
+        .card-header{
+            background-color:#02061f;
+            border-bottom: 3px solid;
+            animation: mymove 5s infinite;
+        }
+
+        .card-title{
+            padding-left: 180px;
+            font-size: 25px;
+            animation: band 5s infinite;
+        }
+
+        @keyframes band {
+            from {color:lightgreen;}
+            to {color: cyan;}
+        }
+
+        @keyframes mymove {
+            from {border-color: lightgreen;}
+            to {border-color: cyan;}
         }
 
         .btn{
             width: 100px;
-            color: red;
+            color: rgb(253, 252, 252);
             border: 1px solid white;
+            animation: mymove 5s infinite;
         }
 
         .btn:hover{
-            background-color: orangered;
+            background-color: white;
         }
+
+
 
     </style>
 
@@ -33,8 +60,8 @@
         <div class="row">
             <div  style="padding-left: 335px; ">
                 <div class="card">
-                    <div class="card-header text-white" style="background-color:#02061f; border-bottom: 2px solid white;" >
-                        <div class="card-title offset-md-5" style="color: red; font-size: 25px;">
+                    <div class="card-header" style="background-color:#02061f; border-bottom: 2px solid rgb(85, 67, 86);" >
+                        <div class="card-title">
                             Sign Up
                         </div>
                     </div>

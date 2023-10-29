@@ -9,6 +9,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    .card{
+        background: red;
+        animation: mymove 5s infinite;
+        border: 3px solid;
+    }
+
+    .card-title{
+        font-size: 25px;
+        padding-left: 118px;
+        animation: band 5s infinite;
+    }
+
+    @keyframes band {
+        from {color: lightgreen;}
+        to {color: cyan;}
+    }
+
+    .card-header{
+        border-bottom: 3px solid;
+        animation: mymove 5s infinite;
+    }
+
+    @keyframes mymove {
+        from {border-color: orange;}
+        to {border-color:blueviolet;}
+    }
+
+</style>
 <body>
     
     <br><br><br>
@@ -16,9 +45,9 @@
 <div class="container">
     <div class="row" >
         <div class="col-md-4 offset-md-4" >
-            <div class="card" style="background: #00bfff; color: aliceblue;">
-                <div class="card-header text-white" style=" border-bottom: 2px solid  white;"  >
-                    <div class="card-title offset-md-4" style="color: black; font-size: 25px; ">
+            <div class="card" style="background-color:#02061f; color: aliceblue;">
+                <div class="card-header" style=" border-bottom: 2px solid  gold;"  >
+                    <div class="card-title" style="color: white; font-size: 25px; ">
                         Profile
                     </div>
                 </div>
@@ -29,7 +58,7 @@
                                     src="{{ user.profile.image.url }}" alt="">
                         </div>
 
-                        <div class="offset-md-1" style="color: black;">
+                        <div class="offset-md-1" style="color: white;">
                             <span>
                                 {{ user.first_name }}
                             </span>

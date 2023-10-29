@@ -62,16 +62,22 @@
 
             <h6 style="font-style: italic;">
 
-                Added by Superuser : Admin
+                Added by Superuser : {{ item.user }}
 
             </h6>
             
         </div>
 
         <div class="col-md-3">
+
+            {% if user.is_authenticated %}
+
             <a href="{% url 'Gadgets:detail' item.id %}" class=" btn" >
                 Details
             </a>
+
+            {% endif %}
+            
         </div>
 
     </div>

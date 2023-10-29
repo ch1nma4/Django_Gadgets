@@ -13,30 +13,56 @@
             width: 490px;
             display:flex;
             justify-content: center;
+            border: 3px solid;
+            animation: mymove 5s infinite;
+        }
+
+        .card-header{
+            background-color:#02061f;
+            border-bottom: 3px solid;
+            animation: mymove 5s infinite;
+        }
+
+        .card-title{
+            padding-left: 190px;
+            font-size: 25px;
+            animation: band 5s infinite;
+        }
+
+        @keyframes band {
+            from {color:orange;}
+            to {color: blueviolet;}
         }
 
         .btn{
             width: 100px;
-            color: red;
-            border: 1px solid white;
+            color: rgb(243, 236, 236);
+            animation: mymove 5s infinite;
         }
 
         .btn:hover{
-            background-color: orangered;
+            background-color: white;
         }
+
+
+        @keyframes mymove {
+            from {border-color: orange;}
+            to {border-color: blueviolet;}
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
         <div class="row">
-            <div  style="padding-top: 10px; padding-left: 335px; ">
+            <div  style="padding-top: 50px; padding-left: 330px; ">
                 <div class="card">
-                    <div class="card-header text-white" style="background-color: #02061f; border-bottom: 2px solid white;" >
-                        <div class="card-title offset-md-5" style="color: red; font-size: 25px;">
+                    <div class="card-header">
+                        <div class="card-title">
                             Login
                         </div>
                     </div>
-                    <div class="card-body" style="background:#02061f">
+                    <div class="card-body" style="background-color:#02061f;" >
                         <form method="POST">
                             {% csrf_token %}
                         

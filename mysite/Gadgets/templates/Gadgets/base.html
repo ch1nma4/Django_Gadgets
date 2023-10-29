@@ -17,15 +17,27 @@
         color: orange;
     }
 
+
+    @keyframes band {
+        from {border-color: lightgreen;}
+        to {border-color: cyan;}
+    }
+
     .navbar-brand{
-        color: red;
         padding-left: 20px;
         font-size: 30px;
         font-family: 'Franklin Gothic Medium',sans-serif;
+        animation: mymove 5s infinite ;
     }
 
     .navbar-brand:hover{
         color: white ;
+
+    }
+
+    @keyframes mymove {
+        from {color: lightgreen;}
+        to {color: cyan;}
     }
 </style>
 
@@ -33,7 +45,7 @@
 
 
 <body style="background:#02061f; color: aliceblue;  overflow-x: hidden;">
-    <nav class="navbar" style="border-bottom: 2px solid white;">
+    <nav class="navbar" style="border-bottom: 2px solid ; animation: band 5s infinite  ">
         <a href="{% url 'Gadgets:index' %}" class="navbar-brand" >
             <span class="navbar-brand">
                 Gadgetz
