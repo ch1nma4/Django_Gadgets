@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from Gadgets.models import Item
 from Gadgets.forms import ItemForm
 from Gadgets.models import History
+from users.models import CusOrders
 
 # Create your views here.
 
@@ -34,9 +35,25 @@ def detail(request , item_id):
         prod_ref = item.prod_code
     )
 
+    # Restaurant and Admin
+
+    if request.user.profile.user_type == 'Rest' or request.user.profile.user_type == 'Admin':
+        Obj_CusOrds = CusOrders.objects.filter(
+            prod_code = item.prod_code
+        )
+
+    # Customer
+    
+    elif request.user.profile.user_type == 'Cust':
+        Obj_CusOrds = CusOrders.objects.filter(
+            prod_code = item.prod_code , 
+            user = request.user.username
+        )
+
     context = {
         'item' : item,
-        'hist' : hist
+        'hist' : hist,
+        'oco'  : Obj_CusOrds
     }
 
     return render(request , 'Gadgets/detail.html', context)

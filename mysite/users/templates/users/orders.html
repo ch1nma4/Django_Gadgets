@@ -1,0 +1,75 @@
+{% extends 'Gadgets/base.html' %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        .container{
+            border-radius: 20px;
+            border: 2px solid red;
+            height: 300px;
+            width: 500px;
+            padding-top:30px ;
+            margin-top: 60px;
+        }
+
+        .f-cont{
+            border-bottom: 1px solid red;
+            font-size: 20px;
+        }
+
+        .b-cont{
+            background-color: black;
+            border: 1px solid red;
+            border-radius: 10px;
+            height: 40px;
+            width: 80px;
+            color: white;
+        }
+
+        .b-cont :hover{
+            background-color:blue;
+        }
+
+        .a-cont{
+            padding-left: 190px ;
+        }
+
+    </style>
+</head>
+<body>
+    <form  method="POST">
+        {% csrf_token %}
+
+        <div class="container">
+            <div class="f-cont">
+                <p>
+                    Are you sure you want to Confrim order for product <b style="color: red;">{{pdcd}}</b>  by <b style="color: red;">{{user}}</b>
+                </p>
+            </div> <br><br>
+
+            <div>
+                <label for="qty">
+                    Enter Quantity : 
+                </label>
+    
+                <input type="number" name="qty" id="qty" value="1">
+            </div> <br><br>
+
+            <div class="a-cont">
+                <button type="submit" class="b-cont">Confrim</button>
+            </div>
+            
+        </div>
+    </form>
+</body>
+</html>
+
+{% endblock %}
