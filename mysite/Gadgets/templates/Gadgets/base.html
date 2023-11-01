@@ -54,12 +54,22 @@
 
         <div  class="navbar">
 
-            {% if user.is_authenticated %}
+            {% if user.is_superuser %}
 
                 <a href="{% url 'Gadgets:create_item' %}" class="nav-link" >
                     ADD ITEM
                 </a>
 
+                <a href= "{% url 'profile' %}" class=" nav-link" >
+                    Profile
+                </a>
+
+                <a href= "{% url 'logout' %}" class=" nav-link" >
+                    logout
+                </a>
+
+            {% elif user.is_authenticated %}
+                
                 <a href= "{% url 'profile' %}" class=" nav-link" >
                     Profile
                 </a>
