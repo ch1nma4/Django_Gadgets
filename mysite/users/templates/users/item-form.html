@@ -1,0 +1,84 @@
+{% extends 'Gadgets/base.html' %}
+
+{% block body %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .card{
+            border: 3px solid;
+            animation: lmove 5s infinite;
+        }
+
+        .card-header{
+            background-color:#02061f;
+            border-bottom: 3px solid;
+            animation: lmove 5s infinite;
+        }
+
+        .card-title{
+            font-size: 25px;
+            animation: band 5s infinite;
+        }
+
+        @keyframes band {
+            from {color:lightgreen;}
+            to {color: cyan;}
+        }
+
+        .btn{
+            width: 100px;
+            color: rgb(243, 236, 236);
+            border: 1px solid white;
+            animation: lmove 5s infinite;
+        }
+
+        .btn:hover{
+            background-color: white;
+            color: #360624;
+        }
+
+
+        @keyframes lmove {
+            from {border-color: lightgreen;}
+            to {border-color: cyan;}
+        }
+
+    </style>
+</head>
+<body>
+    <br><br><br>
+
+    <div class="row">
+        <div class="col-sm-5 offset-md-4">
+            <div class="card" style="background-color: transparent;">
+                <div class="card-header text-white" style="background-color: transparent;">
+                    <div class="card-title offset-md-3">
+                        Add Ratings and Feeback 
+                    </div>
+                </div>
+                <div class="card-body" style="color: white; font-family: meridan;">
+                    
+                    <form  method="POST" style="color: white;">
+                        {% csrf_token %}
+                        {{ form }}
+                        <br><br>
+                        <button class="btn offset-md-5" >Save</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<br><br>
+    
+</body>
+</html>
+
+{% endblock %}
