@@ -11,64 +11,94 @@
 
     <style>
 
-        .container{
-            border-radius: 20px;
-            border: 2px solid red;
-            height: 300px;
-            width: 500px;
-            padding-top:30px ;
-            margin-top: 60px;
-        }
+        .card{
+                animation: pmove 5s infinite;
+                border: 3px solid;
+            }
 
-        .f-cont{
-            border-bottom: 1px solid red;
+        .card-title{
             font-size: 20px;
+            animation: band 5s infinite;
         }
 
-        .b-cont{
-            background-color: black;
-            border: 1px solid red;
-            border-radius: 10px;
-            height: 40px;
-            width: 80px;
-            color: white;
+        @keyframes band {
+            from {color: lightgreen;}
+            to {color: cyan;}
         }
 
-        .b-cont :hover{
-            background-color:blue;
+        .card-header{
+            border-bottom: 3px solid;
+            animation: pmove 5s infinite;
         }
 
-        .a-cont{
-            padding-left: 190px ;
+        @keyframes pmove {
+            from {color: lightgreen;}
+            to {color: cyan;}
         }
+
+        .btn{
+                width: 100px;
+                color: rgb(253, 252, 252);
+                border: 1px solid white;
+                animation: bgmove 5s infinite;
+            }
+
+        .btn:hover{
+            background-color: white;
+            color: #360624;
+        }
+
 
     </style>
 </head>
 <body>
-    <form  method="POST">
-        {% csrf_token %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <div class="card" style="background-color: transparent;">
+                    <div class="card-header" style="background-color: transparent;">
+                        <div class="card-title offset-md-3">
+                            Edit Order Quantity
+                        </div>
+                    </div>
+                    <div class="card-body" style="color: white; font-family: meridan;">
+                        
+                        <form  method="POST">
+                            {% csrf_token %}
+                    
+                            <div class="container">
+                                <div class="f-cont">
+                                    <p>
+                                        Are you sure you want to Confrim order for product <b style="color: red;">{{pdcd}}</b>  by <b style="color: red;">{{user}}</b>
+                                    </p>
+                                </div> <br><br>
+                    
+                                <div>
+                                    <label for="qty">
+                                        Enter Quantity : 
+                                    </label>
+                        
+                                    <input type="number" name="qty" id="qty" value="1">
+                                </div> <br><br>
 
-        <div class="container">
-            <div class="f-cont">
-                <p>
-                    Are you sure you want to Confrim order for product <b style="color: red;">{{pdcd}}</b>  by <b style="color: red;">{{user}}</b>
-                </p>
-            </div> <br><br>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <button type="submit" class="btn offset-md-3">Confrim</button>
+                                    <a href="{% url 'Gadgets:index' %}" class="btn offset-md-3">Back</a>
+                                    
+                                </div>
+                                
+                            </div>
+                        </form>
+                        
 
-            <div>
-                <label for="qty">
-                    Enter Quantity : 
-                </label>
-    
-                <input type="number" name="qty" id="qty" value="1">
-            </div> <br><br>
-
-            <div class="a-cont">
-                <button type="submit" class="b-cont">Confrim</button>
+                    </div>
+                </div>
             </div>
-            
         </div>
-    </form>
+    </div>
+    
+    <br><br>
+
 </body>
 </html>
 

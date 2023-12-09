@@ -3,6 +3,14 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+
+category_choices = (
+    ('KB','Keyboard'),
+    ('MO','Mouse'),
+    ('HP','Headphone'),
+    ('CS','Computer Specs'),
+)
+
 class Item(models.Model):
 
     user = models.ForeignKey(
@@ -22,6 +30,8 @@ class Item(models.Model):
     item_price = models.IntegerField()
 
     item_image = models.CharField(max_length=500 , default="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7OD-PXxcJaOcBjEXnay7aD8VNMoiUgfXm3Q&usqp=CAU")
+
+    category = models.CharField(choices=category_choices, max_length=2 , null=True)
 
 
     def __str__(self):

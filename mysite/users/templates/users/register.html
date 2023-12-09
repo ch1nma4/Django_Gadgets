@@ -10,21 +10,17 @@
     <title>Document</title>
     <style>
         .card{
-            width: 490px;
-            display:flex;
-            justify-content: center;
             border: 3px solid;
-            animation: mymove 5s infinite;
+            animation: bgmove 5s infinite;
         }
 
         .card-header{
             background-color:#02061f;
             border-bottom: 3px solid;
-            animation: mymove 5s infinite;
+            animation: bgmove 5s infinite;
         }
 
         .card-title{
-            padding-left: 180px;
             font-size: 25px;
             animation: band 5s infinite;
         }
@@ -34,7 +30,7 @@
             to {color: cyan;}
         }
 
-        @keyframes mymove {
+        @keyframes bgmove {
             from {border-color: lightgreen;}
             to {border-color: cyan;}
         }
@@ -43,11 +39,12 @@
             width: 100px;
             color: rgb(253, 252, 252);
             border: 1px solid white;
-            animation: mymove 5s infinite;
+            animation: bgmove 5s infinite;
         }
 
         .btn:hover{
             background-color: white;
+            color: #360624;
         }
 
 
@@ -56,47 +53,51 @@
 
 </head>
 <body>
-    <div class="container">
+
         <div class="row">
-            <div  style="padding-left: 335px; ">
-                <div class="card">
-                    <div class="card-header" style="background-color:#02061f; border-bottom: 2px solid rgb(85, 67, 86);" >
-                        <div class="card-title">
-                            Sign Up
+            <div class="col-sm-4 offset-md-4">
+                <div class="card" style="background-color: transparent; backdrop-filter: blur(500px);">
+                    <div class="card-header text-white" style="background-color: transparent; font-family: meridan;">
+                        <div class="card-title offset-md-3">
+                            SIGN UP/ REGISTER
                         </div>
                     </div>
-                    <div class="card-body" style="background:#02061f">
+                    <div class="card-body" style="color: white; font-family: meridan;">
                         <form method="POST">
                             {% csrf_token %}
                             
-                            <label class="offset-md-1">Username: </label>
-                            <span >{{ form.username }}</span><br><br>
+                            <label class="offset-md-1">Username: </label><br>
+                            <span class="offset-md-1" >{{ form.username }}</span><br><br>
                         
-                            <br><label class = 'offset-md-1'> Email: </label>
-                            <spa>{{ form.email }}</spa><br><br> 
+                            <label class = 'offset-md-1'> Email: </label><br>
+                            <span class="offset-md-1">{{ form.email }}</span><br><br>
                         
-                            <br><label class = 'offset-md-1'>First Name: </label>
-                            <span >{{ form.first_name }}</span><br><br> 
+                            <label class = 'offset-md-1'>First Name: </label><br>
+                            <span class="offset-md-1" >{{ form.first_name }}</span><br><br> 
                         
-                            <br><label class = 'offset-md-1'>Last Name: </label>
-                            <span >{{ form.last_name }}</span><br><br> 
+                            <label class = 'offset-md-1'>Last Name: </label><br>
+                            <span class="offset-md-1" >{{ form.last_name }}</span><br><br> 
                         
-                            <br><label class = 'offset-md-1'> Password: </label>
-                            <span >{{ form.password1 }}</span><br><br> 
+                            <label class = 'offset-md-1'> Password: </label><br>
+                            <span class="offset-md-1">{{ form.password1 }}</span><br><br> 
                         
-                            <br><label class = 'offset-md-1'> Confirm Password: </label>
-                            <span >{{ form.password2 }}</span>
+                            <label class = 'offset-md-1'> Confirm Password: </label><br>
+                            <span class="offset-md-1">{{ form.password2 }}</span>
                             
                             <br><br><button class="btn offset-md-5" type="submit">Sign Up</button><br>
                         </form>
-                        
+
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <br><br><br>
+
+    
+    <br><br>
+    
 </body>
 </html>
 
 {% endblock %}
+
+

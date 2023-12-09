@@ -10,29 +10,24 @@
     <title>Document</title>
     <style>
         .card{
-            width: 490px;
-            display:flex;
-            justify-content: center;
             border: 3px solid;
-            animation: mymove 5s infinite;
+            animation: nomove 5s infinite;
         }
 
         .card-header{
             background-color:#02061f;
             border-bottom: 3px solid;
-            animation: mymove 5s infinite;
+            animation: nomove 5s infinite;
         }
 
-        @keyframes mymove {
+        @keyframes nomove {
             from {border-color: lightgreen;}
             to {border-color: cyan;}
         }
 
         .card-title{
             font-size: 25px;
-            padding-left: 160px;
             animation: band 5s infinite;
-
         }
 
         @keyframes band {
@@ -44,10 +39,12 @@
             width: 100px;
             color: rgb(245, 243, 243);
             border: 1px solid white;
-            animation: mymove 5s infinite;
+            animation: nomove 5s infinite;
+            border-radius: 10px;
         }
 
         .btn:hover{
+            color: #360624;
             background-color: white;
         }
 
@@ -56,52 +53,53 @@
 
 <body>
 
-<div class="container">
     <div class="row">
-        <div  style="padding-top: 30px; padding-left: 335px; ">
-            <div class="card">
-                <div class="card-header" style="background-color:#02061f; border-bottom: 2px solid rgb(85, 67, 86);" >
-                    <div class="card-title">
+        <div class="col-sm-4 offset-md-4">
+            <div class="card" style="background-color: transparent;">
+
+                <div class="card-header text-white" style="background-color: transparent; font-family: meridan;">
+                    <div class="card-title offset-md-4">
                         ADD ITEM
                     </div>
                 </div>
-                <div class="card-body" style="background:#02061f">
-                    <form method="POST" style="color: white ">
+                <div class="card-body" style="color: white; font-family: meridan;">
+                    <form method="POST">
                         {% csrf_token %}
                 
-                        <label class="offset-md-2">Product Code : </label>
-                        <span class="field">{{ form.prod_code }}</span>
+                        <label class="offset-md-1">Product Code : </label><br>
+                        <span class="offset-md-1">{{ form.prod_code }}</span>
                         <br><br>
                 
-                        <label class="offset-md-2">For User : </label>
-                        <span class="field">{{ form.for_user }}</span>
+                        <label class="offset-md-1">For User : </label><br>
+                        <span class="offset-md-1">{{ form.for_user }}</span>
                         <br><br>
                 
-                        <label class="offset-md-2">Item Name : </label>
-                        <span class="field">{{ form.item_name }}</span>
+                        <label class="offset-md-1">Item Nmae : </label><br>
+                        <span class="offset-md-1">{{ form.item_name }}</span>
                         <br><br>
                 
-                        <label class="offset-md-2">Item Description : </label>
-                        <span class="field">{{ form.item_desc }}</span>
+                        <label class="offset-md-1">Item Description : </label><br>
+                        <span class="offset-md-1">{{ form.item_desc }}</span>
                         <br><br>
                 
-                        <label class="offset-md-2">Item Price : </label>
-                        <span class="field">{{ form.item_price }}</span>
+                        <label class="offset-md-1">Item Price : </label><br>
+                        <span class="offset-md-1">{{ form.item_price }}</span>
                         <br><br>
                 
-                        <label class="offset-md-2">Item Image : </label>
-                        <span class="field">{{ form.item_image }}</span>
-                        <br><br><br>
-                        
-                        <button class="btn offset-md-5" type="submit">Save</button>
-                        
+                        <label class="offset-md-1">Item Image : </label><br>
+                        <span class="offset-md-1">{{ form.item_image }}</span>
+                        <br><br>
+                
+                        <button class="offset-md-5 btn" type="submit">Save</button>
                     </form>
                     
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+
+<br><br>
 
 
 </body>

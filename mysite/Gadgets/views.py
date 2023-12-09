@@ -12,14 +12,29 @@ def index(request):
     if request.user.is_superuser:
         itemlist = Item.objects.all()
 
+        item_name = request.GET.get('item_name')
+        if item_name != '' and item_name is not None:
+            itemlist = Item.objects.filter(item_name__icontains = item_name )
+
     elif request.user.is_authenticated and request.user.profile.user_type == 'Rest':
         itemlist = Item.objects.filter(for_user=request.user.username)
+
+        item_name = request.GET.get('item_name')
+        if item_name != '' and item_name is not None:
+            itemlist = Item.objects.filter(item_name__icontains = item_name )
 
     elif request.user.is_authenticated and request.user.profile.user_type == 'Cust':
         itemlist = Item.objects.all()
 
+        item_name = request.GET.get('item_name')
+        if item_name != '' and item_name is not None:
+            itemlist = Item.objects.filter(item_name__icontains = item_name )
+
     else:
         itemlist = Item.objects.all()
+        item_name = request.GET.get('item_name')
+        if item_name != '' and item_name is not None:
+            itemlist = Item.objects.filter(item_name__icontains = item_name )
 
     context = {
         'itemlist' : itemlist
@@ -57,6 +72,39 @@ def detail(request , item_id):
     }
 
     return render(request , 'Gadgets/detail.html', context)
+
+
+def allproduct(request):
+
+    if request.user.is_superuser:
+        itemlist = Item.objects.all()
+
+        item_name = request.GET.get('item_name')
+        if item_name != '' and item_name is not None:
+            itemlist = Item.objects.filter(item_name__icontains = item_name )
+
+    elif request.user.is_authenticated and request.user.profile.user_type == 'Rest':
+        itemlist = Item.objects.filter(for_user=request.user.username)
+
+        item_name = request.GET.get('item_name')
+        if item_name != '' and item_name is not None:
+            itemlist = Item.objects.filter(item_name__icontains = item_name )
+
+    elif request.user.is_authenticated and request.user.profile.user_type == 'Cust':
+        itemlist = Item.objects.all()
+
+        item_name = request.GET.get('item_name')
+        if item_name != '' and item_name is not None:
+            itemlist = Item.objects.filter(item_name__icontains = item_name )
+
+    else:
+        itemlist = Item.objects.all()
+
+    context = {
+        'itemlist' : itemlist
+    }
+
+    return render(request , 'Gadgets/allproduct.html' , context)
 
 def create_item(request):
     form = ItemForm(request.POST or None)
@@ -133,3 +181,17 @@ def delete_item(request , id):
     
 
     return render(request , 'Gadgets/item-delete.html' , context)
+
+
+def category(request, val):
+
+    items = Item.objects.filter(
+        category = val
+    )
+
+
+    context = {
+        'items':items
+    }
+    
+    return render(request, 'Gadgets/category.html',context)

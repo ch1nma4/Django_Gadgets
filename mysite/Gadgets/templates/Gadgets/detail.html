@@ -8,22 +8,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        .btn{
+            width: 100px;
+            color: white;
+            border: 1px solid white;
+            border-radius: 10px;
+        }
+
+        .btn:hover{
+            background-color: rgb(102, 255, 245);
+        }
+    </style>
 </head>
 <body>
-    <div class="row">
+    <div class="row" style="padding-top: 30px; font-family: meridan;">
         <div class="col-md-2 offset-md-1">
             <img
-                height="150px"
-                width="250px"
+                height="450px"
+                width="400px"
                 class="card"
                 src="{{ item.item_image }}"
             >
         </div>
     
-        <div class="col-md-4 offset-md-1">
+        <div class="col-md-4 offset-md-2">
             <h1
                 style="
-                    font-style: italic;
+                    font-style: italic; color: yellow; font-family: meridan;
                 "
             >
                 {{ item.item_name }}
@@ -34,23 +47,21 @@
                     font-style: italic;
                     font-size: 1.3rem;
                     text-align: justify;
+                    color: white;
                 "
             >
                 {{ item.item_desc }}
             </h2>
     
-            <h3>
+            <h3 style="color: rgb(239, 13, 47);">
                 ${{ item.item_price }}
             </h3>
-        </div>
-    
-        <div class="col-md-3 offset-md-1">
 
             {% if user.is_superuser %}
                 <a
                     href="{% url 'Gadgets:update_item' item.id %}"
                     style="width:80px"
-                    class="btn btn-warning"
+                    class="btn mt-3"
                 >
                     Edit
                 </a>
@@ -58,7 +69,7 @@
                 <a
                     href="{% url 'Gadgets:delete_item' item.id %}"
                     style="width:80px"
-                    class="btn btn-danger"
+                    class="btn mt-3"
                 >
                     Delete
                 </a>
@@ -66,7 +77,7 @@
                 <a
                     href="{% url 'Gadgets:index' %}"
                     style="width:80px"
-                    class="btn btn-success"
+                    class="btn mt-3"
                 >
                     Back
                 </a>
@@ -76,7 +87,7 @@
                 <a
                     href="{% url 'Gadgets:update_item' item.id %}"
                     style="width:80px"
-                    class="btn btn-warning"
+                    class="btn mt-3"
                 >
                     Edit
                 </a>
@@ -84,7 +95,7 @@
                 <a
                     href="{% url 'Gadgets:index' %}"
                     style="width:80px"
-                    class="btn btn-success"
+                    class="btn mt-3"
                 >
                     Back
                 </a>
@@ -93,7 +104,7 @@
                 <a
                     href="{% url 'users:orders' item.id item.prod_code user.username  %}"
                     style="width:80px"
-                    class="btn btn-warning"
+                    class="btn mt-3"
                 >
                     Order
                 </a>
@@ -101,13 +112,15 @@
                 <a
                     href="{% url 'Gadgets:index' %}"
                     style="width:80px"
-                    class="btn btn-success"
+                    class="btn mt-3"
                 >
                     Back
                 </a>
 
+
             {% endif %}
         </div>
+
     </div>
     <br><br>
 
@@ -187,32 +200,61 @@
                         class="row">
 
                         <div 
-                            class="col-md-3 
+                            class="col-md-2 
                                 text-left">
 
                             {{ obj.order_id }}
                         </div>
 
                         <div 
-                            class="col-md-3 
+                            class="col-md-2 
                                 text-left">
 
                             {{ obj.prod_code }}
                         </div>
 
                         <div 
-                            class="col-md-3 
+                            class="col-md-2 
                                 text-left">
 
                             {{ obj.quantity }}
                         </div>
 
                         <div 
-                            class="col-md-3 
+                            class="col-md-2 
                                 text-left">
 
                             {{ obj.user }}
                         </div>
+
+                        <div 
+                                class="col-md-2 
+                                    text-left">
+
+                                {% if user.profile.user_type == 'Cust' %}
+                                    <a
+                                        class="btn btn-warning btn-sm"
+                                        href="{% url 'users:upd_orders' item.id obj.order_id %}">
+
+                                        Edit Qty
+                                    </a>
+                                {% endif %}
+                            </div>
+
+                            <div 
+                                class="col-md-2 
+                                    text-left">
+
+                                {% if user.profile.user_type == 'Cust' %}
+                                    <a
+                                        class="btn btn-primary btn-sm"
+                                        href="#">
+
+                                        Buy Now
+                                    </a>
+                                {% endif %}
+                            </div>
+                            
                     </div>
             </div>
 
@@ -223,13 +265,15 @@
 
         </div>
 
+
         {% endfor %}
 
     {% endif %}
 
 {% endif %}
 
-    
+
+
 
 
 </body>

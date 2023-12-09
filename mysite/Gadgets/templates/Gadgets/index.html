@@ -15,10 +15,21 @@
             width: 100px;
             color: white;
             border: 1px solid white;
+            border-radius: 10px;
         }
 
         .btn:hover{
-            background-color: orangered;
+            background-color: rgb(102, 255, 245);
+        }
+
+        .c-item{
+            height: 685px;
+        }
+
+        .c-img{
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.6);
         }
 
     </style>
@@ -26,65 +37,99 @@
 
 <body>
 
-    {% for item in itemlist %}
-
-    <div class="row mb-5">
-
-        <div class="col-md-3 offset-md-2 ">
-            <img src="{{ item.item_image }}" 
-                class="card" height="135px" width="230px"
-            >
-        </div>
-
-        <div class="col-md-4">
-            
-            <h3 style="font-size: 1.5rem; color: red;">
-
-                {{ item.item_name }}
-
-            </h3>
-
-            <h5 style="font-style: italic; font-size: 1rem;">
-
-                {{ item.item_desc | truncatewords:6 }}
-
-            </h5>
-
-            <h6>
-                ${{ item.item_price }}
-            </h6>
-
-            <h6 style="font-style: italic;">
-
-                Added for : {{ item.for_user }}
-
-            </h6>
-
-            <h6 style="font-style: italic;">
-
-                Added by Superuser : {{ item.user }}
-
-            </h6>
-            
-        </div>
-
-        <div class="col-md-3">
-
-            {% if user.is_authenticated %}
-
-            <a href="{% url 'Gadgets:detail' item.id %}" class=" btn" >
-                Details
+        <div class="bd-example">
+            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active c-item">
+                <img src="https://pixelz.cc/wp-content/uploads/2018/07/logitech-logo-uhd-4k-wallpaper.jpg" class="d-block w-100 c-img" alt="https://pixelz.cc/wp-content/uploads/2018/07/logitech-logo-uhd-4k-wallpaper.jpg">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 style="color:cyan ; font-size: 40px; font-family: merienda;">LOGITECH</h5>
+                    <p style="color: white; font-size: 20px; font-family: merienda;">“Together We Create,” </p>
+                </div>
+                </div>
+                <div class="carousel-item c-item">
+                <img src="https://wallpaperaccess.com/full/838089.jpg" class="d-block w-100 c-img" alt="https://wallpaperaccess.com/full/838089.jpg">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 style="color:cyan ; font-size: 40px; font-family: merienda;">HPERX GAMING</h5>
+                    <p style="color: white; font-size: 20px; font-family: merienda; ">We're All Gamers</p>
+                </div>
+                </div>
+                <div class="carousel-item c-item">
+                <img src="https://wallpapercave.com/wp/wp9134498.jpg" class="d-block w-100 c-img" alt="https://wallpapercave.com/wp/wp9134498.jpg">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 style="color:cyan ; font-size: 40px;font-family: merienda;">CORSAIR GAMING</h5>
+                    <p style="color: white; font-size: 20px;font-family: merienda;">Play To Your Level</p>
+                </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
             </a>
-
-            {% endif %}
-            
+            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+            </div>
         </div>
 
-    </div>
+        <br>
+
+        <div class="container mt-5">
+            <h1 class="text-center font-weight-normal" style="color:rgb(47, 255, 92); font-family: meridan;">Product card with Model</h1>
+        </div>
+
+    {% for item in itemlist %}
     
+        <div class="row d-flex justify-content-center" >
+
+            <div class="col-md-4 mt-5">
+                <div class="card">
+                    <img src="{{ item.item_image }}" 
+                class="card-img-top w-100" style="height: 250px; width: 200px; border-bottom: 2px solid white;" >
+
+                <div class="card-body " style="background-color: black;">
+                    <h3 class="card-title" style="font-size: 1.5rem; color: red; font-family: meridan;">
+
+                        {{ item.item_name }}
+        
+                    </h3>
+
+                    <div class="d-flex justify-content-between" style="color: white;">
+                        <h5 style="font-style: italic; font-size: 1rem;">
+
+                            {{ item.item_desc | truncatewords:6 }}
+            
+                        </h5>
+
+                        <h6>
+                            ${{ item.item_price }}
+                        </h6>
+                    </div><br>
+
+                    {% if user.is_authenticated %}
+
+                        <a href="{% url 'Gadgets:detail' item.id %}" class="btn md-3">
+                            Details
+                        </a>
+
+                    {% endif %}
+                </div>
+                </div>
+            </div> 
+        </div>
+
+
     {% endfor %}
 
-    {% endblock %}
+{% endblock %}
     
 </body> 
 </html>
+
+

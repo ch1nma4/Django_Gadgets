@@ -10,55 +10,70 @@
     <title>Document</title>
 </head>
 <style>
-    .card{
-        background: red;
-        animation: mymove 5s infinite;
-        border: 3px solid;
-    }
 
     .card-title{
-        font-size: 25px;
-        padding-left: 118px;
-        animation: band 5s infinite;
+        animation: Kmove 5s infinite;
     }
 
-    @keyframes band {
-        from {color: lightgreen;}
-        to {color: cyan;}
+    @keyframes Kmove {
+        from {color: rgb(16, 210, 231);}
+        to {color: rgb(134, 14, 220);}
     }
 
-    .card-header{
-        border-bottom: 3px solid;
-        animation: mymove 5s infinite;
+    .box {
+        --border-size: 3px;
+        --border-angle: 0turn;
+        width: 60vmin;
+        height: 50vmin;
+        background-image: conic-gradient(from var(--border-angle), #213, #112 50%, #213), conic-gradient(from var(--border-angle), transparent 20%, #08f, #f03);
+        background-size: calc(100% - (var(--border-size) * 2)) calc(100% - (var(--border-size) * 2)), cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        -webkit-animation: bg-spin 3s linear infinite;
+        animation: bg-spin 3s linear infinite;
     }
 
-    @keyframes mymove {
-        from {border-color: orange;}
-        to {border-color:blueviolet;}
+    @-webkit-keyframes bg-spin {
+        to {
+            --border-angle: 1turn;
+        }
+    }
+
+    @keyframes bg-spin {
+        to {
+            --border-angle: 1turn;
+        }
+    }
+
+    .box:hover {
+        -webkit-animation-play-state: paused;
+        animation-play-state: paused;
+    }
+
+    @property --border-angle {
+        syntax: "<angle>";
+        inherits: true;
+        initial-value: 0turn;
     }
 
 </style>
 <body>
-    
-    <br><br><br>
 
-<div class="container">
-    <div class="row" >
-        <div class="col-md-4 offset-md-4" >
-            <div class="card" style="background-color:#02061f; color: aliceblue;">
-                <div class="card-header" style=" border-bottom: 2px solid  gold;"  >
-                    <div class="card-title" style="color: white; font-size: 25px; ">
-                        Profile
-                    </div>
-                </div>
-                <div class="card-body" style="height: 200px;">
-                    <div class="row"  >
-                        <div class="offset-md-1">
-                            <img style="border-radius: 10px; border: 1px solid black;" height="100px" width="100px"
+<br><br><br>
+<div class="box col-md-4 offset-md-4">
+    <div class="card-header" style=" border-bottom: 2px solid white;"  >
+        <div class="card-title offset-md-4" style="color: rgb(239, 6, 6); font-size: 25px; font-family: monospace; ">
+            Profile
+        </div>
+    </div>
+    <div class="card-body">
+                    <div class="row">
+                        <div class="offset-md-3 mt-2">
+                            <img style="border-radius: 10px; border: 1px solid rgb(0, 6, 6);" height="130px" width="130px"
                                     src="{{ user.profile.image.url }}" alt="">
                         </div>
 
-                        <div class="offset-md-1" style="color: white;">
+                        <div class="offset-md-3 mt-4" style="color: white; font-family: meridan; font-size: 1.3rem;">
                             <span>
                                 {{ user.first_name }}
                             </span>
@@ -77,14 +92,8 @@
 
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
 </div>
-
-<br><br><br>
-
-
+<br><br>
 </body>
 </html>
 

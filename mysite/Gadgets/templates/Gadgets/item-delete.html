@@ -37,18 +37,29 @@
         }
     </style>
 </head>
-<body>
-    <form method="POST">
-        {% csrf_token %}
+<div>
 
-        <h3 class="item-d">Are you sure you want to delete, <span style="color: red; font-size: 30px;">{{ item.item_name }}</span></h3>
-
-        <div class="item-a">
-            <button class="item-b" type="submit">Confirm</button>
+    <div class="row mt-5">
+        <div class="col-sm-6 offset-md-3" style="border-radius:10px; border: 1px solid red;">
+                <div class="card-body" style="color: white; font-family: meridan;">
+                    <form method="POST">
+                        {% csrf_token %}
+                
+                        <h3 class="item-d">Are you sure you want to delete, <span style="color: red; font-size: 30px;">{{ item.item_name }}</span></h3>
+                
+                        <div class="item-a">
+                            <button class="item-b" type="submit">Confirm</button>
+                        </div>
+                        
+                
+                    </form>
+                </div>
+            </div>
         </div>
-        
+    </div>
+<br><br><br><br>
 
-    </form>
+    
 </body>
 </html>
 
