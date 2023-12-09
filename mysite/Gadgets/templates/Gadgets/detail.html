@@ -255,7 +255,7 @@
                                 {% if user.profile.user_type == 'Cust' %}
                                     <a
                                         class="btn btn-primary btn-sm"
-                                        href="#">
+                                        href="{% url 'users:buy' item.item_price obj.quantity %}">
 
                                         Buy Now
                                     </a>
@@ -347,7 +347,7 @@
                                 {% if obj.username == user.username %}
                                     <a
                                         class="btn btn-warning btn-sm"
-                                        href="#">
+                                        href="{% url 'users:upd_crf' item.id obj.id %}">
 
                                         Edit
                                     </a>
@@ -361,7 +361,7 @@
                                 {% if obj.username == user.username %}
                                     <a
                                         class="btn btn-primary btn-sm"
-                                        href="#">
+                                        href="{% url 'users:del_crf' item.id obj.id %}">
 
                                         Delete
                                     </a>

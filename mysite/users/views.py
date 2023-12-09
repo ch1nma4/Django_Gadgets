@@ -4,9 +4,10 @@ from users.forms import RegisterForm
 from django.contrib import messages
 from django.contrib.auth import authenticate , login , logout
 from django.contrib.auth.decorators import login_required
-from users.models import CusOrders 
+from users.models import CusOrders , CusRatingFeedback
 from users.forms import CusOrdersUpd ,CusRatFeedForm
-
+from django.http import JsonResponse
+import json
 
 # Create your views here.
 
@@ -133,3 +134,57 @@ def CusRatFeed(request , it_id , pc):
         return redirect('Gadgets:detail' , item_id = it_id)
 
     return render(request , 'users/item-form.html' , context)
+
+def update_crf(request , details_id , crf_id):
+
+    crfo = CusRatingFeedback.objects.get(pk = crf_id)
+    form = CusRatFeedForm(request.POST or None , instance=crfo)
+
+    context = {
+        'form' : form,
+    }
+    if form.is_valid():
+        form.save()
+        return redirect('Gadgets:detail' , item_id = details_id)
+    
+    return render(request , 'users/crf_upd.html' , context)
+
+
+def delete_crf(request , details_id , crf_id):
+
+    crfo = CusRatingFeedback.objects.get(pk = crf_id)
+
+    context = {
+        'crfo' : crfo,
+    }
+
+    if request.method == 'POST':
+        crfo.delete()
+        return redirect('Gadgets:detail' , item_id = details_id)
+    
+    return render(request , 'users/crf_del.html' , context)
+
+def Payment(request , amt , qnt):
+
+    context ={
+        'amt' : amt,
+        'qnt' : qnt,
+        'tot' : amt * qnt
+    }
+    return render(request , 'users/payment.html' , context)
+
+def OnApprove(request):
+
+    if request.method == 'POST':
+        body = json.loads(request.body)
+        print(body)
+
+        context = {
+
+        }
+
+        return JsonResponse(context)
+    
+def PaymentSuccess(request):
+
+    return render(request, 'users/pymtsuccess.html')

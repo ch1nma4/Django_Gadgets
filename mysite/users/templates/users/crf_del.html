@@ -1,0 +1,67 @@
+{% extends 'Gadgets/base.html' %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .item-d{
+            display: flex;
+            text-align: center;
+            justify-content: center;   
+            padding-top: 30px;
+        }
+
+        .btn{
+            width: 100px;
+            color: rgb(243, 236, 236);
+            border: 1px solid white;
+            animation: lmove 5s infinite;
+        }
+
+        .btn:hover{
+            background-color: white;
+            color: #360624;
+        }
+
+
+        @keyframes lmove {
+            from {border-color: lightgreen;}
+            to {border-color: cyan;}
+        }
+
+    </style>
+</head>
+<div>
+
+    <div class="row mt-5">
+        <div class="col-mb-5 offset-md-4" style="border-radius:10px; border: 1px solid red;">
+                <div class="card-body" style="color: white; font-family: meridan;">
+                    <form method="POST">
+                        {% csrf_token %}
+                
+                        <h3 class="item-d">Are you sure you want to delete Ratings and Feedback</h3><br>
+                
+                        <div class="btn-group offset-md-4" role="group" aria-label="Basic example">
+                            <button type="submit" class="btn">Confrim</button>
+                            <a class="btn " href="{% url 'Gadgets:index' %}" class="btn offset-md-3">Back</a>
+                            
+                        </div>
+                        
+                
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<br><br><br><br>
+
+    
+</body>
+</html>
+
+{% endblock %}

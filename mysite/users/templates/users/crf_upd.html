@@ -2,13 +2,13 @@
 
 {% block body %}
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
     <style>
         .card{
             border: 3px solid;
@@ -51,30 +51,24 @@
 
     </style>
 </head>
-
-
 <body>
     <br><br><br>
 
     <div class="row">
-        <div class="col-sm-4 offset-md-4">
+        <div class="col-sm-5 offset-md-4">
             <div class="card" style="background-color: transparent;">
                 <div class="card-header text-white" style="background-color: transparent;">
-                    <div class="card-title offset-md-2">
-                        Update Orders No. 
-                        {{ coo.order_id }} of  {{ request.user.username }}
-
+                    <div class="card-title offset-md-3">
+                        Update Ratings and Feeback 
                     </div>
                 </div>
                 <div class="card-body" style="color: white; font-family: meridan;">
                     
-                    <form method="POST">
+                    <form  method="POST" style="color: white;">
                         {% csrf_token %}
-                    
-                        <br><label>Quantity: </label><br>
-                        {{ form.quantity }} <br><br>
-                    
-                        <div class="btn-group offset-md-3" role="group" aria-label="Basic example">
+                        {{ form }}
+                        <br><br>
+                        <div class="btn-group offset-md-4" role="group" aria-label="Basic example">
                             <button type="submit" class="btn">Confrim</button>
                             <a href="{% url 'Gadgets:index' %}" class="btn offset-md-3">Back</a>
                             
@@ -87,6 +81,7 @@
     </div>
 
 <br><br>
+    
 </body>
 </html>
 
