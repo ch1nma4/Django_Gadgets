@@ -12,13 +12,22 @@
 <body>
     <br><br><br>
 
-<h3 style="color: white;">
-    Pay ${{tot }}
-</h3>
-
-<div id="paypal-button-container">
-
-</div>
+    <div class="row mt-5">
+        <div class="col-sm-6 offset-md-3" style="border-radius:10px; border: 1px solid red;">
+                <div class="card-body" style="color: white; font-family: meridan;">
+                    <h3 style="color: white;">
+                        Pay ${{tot }}
+                    </h3>
+                    <br>
+                    
+                    <div id="paypal-button-container">
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<br><br><br><br>
 
 <script>
     function getCookie(name) {
@@ -98,3 +107,4 @@
 </html>
 
 {% endblock %}
+
